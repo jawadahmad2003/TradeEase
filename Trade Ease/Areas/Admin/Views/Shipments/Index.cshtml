@@ -1,0 +1,6 @@
+@model IEnumerable<TradeEase.Models.Entities.Shipment>
+@{ ViewData["Title"] = "All Shipments"; }
+<div class="card"><div class="card-body p-0"><table class="table mb-0"><thead><tr><th>Reference</th><th>Trader</th><th>Type</th><th>Product</th><th>Status</th></tr></thead><tbody>
+@foreach (var s in Model) { <tr><td>@s.ShipmentReference</td><td>@s.User.FullName</td><td>@s.ShipmentType</td><td>@s.ProductDesc</td><td>@s.ShipmentStatus</td></tr> }
+@if (!Model.Any()) { <tr><td colspan="5" class="text-muted text-center py-4">No shipments in database.</td></tr> }
+</tbody></table></div></div>

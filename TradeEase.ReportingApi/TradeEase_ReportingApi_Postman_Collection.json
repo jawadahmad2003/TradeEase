@@ -1,0 +1,165 @@
+{
+  "info": {
+    "name": "TradeEase Reporting API",
+    "description": "Endpoints for the isolated TradeEase.ReportingApi microservice.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/reports/health",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "reports",
+            "health"
+          ]
+        },
+        "description": "Liveness check for the reporting microservice."
+      },
+      "response": []
+    },
+    {
+      "name": "Get Shipment Report",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/reports/shipments?startDate=&endDate=&shipmentType=Import&status=",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "reports",
+            "shipments"
+          ],
+          "query": [
+            {
+              "key": "startDate",
+              "value": "",
+              "description": "e.g., 2024-01-01"
+            },
+            {
+              "key": "endDate",
+              "value": "",
+              "description": "e.g., 2024-12-31"
+            },
+            {
+              "key": "shipmentType",
+              "value": "Import",
+              "description": "Import or Export"
+            },
+            {
+              "key": "status",
+              "value": "",
+              "description": "e.g., Booked, Cleared"
+            }
+          ]
+        },
+        "description": "Fetches dynamic shipment report via stored procedure."
+      },
+      "response": []
+    },
+    {
+      "name": "Get Top Countries",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/reports/top-countries?topN=5",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "reports",
+            "top-countries"
+          ],
+          "query": [
+            {
+              "key": "topN",
+              "value": "5"
+            }
+          ]
+        },
+        "description": "Fetches the top N import/export countries."
+      },
+      "response": []
+    },
+    {
+      "name": "Get Single Shipment Details",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/reports/shipment/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "reports",
+            "shipment",
+            "1"
+          ]
+        },
+        "description": "Fetches a single shipment detail using the shipment ID."
+      },
+      "response": []
+    },
+    {
+      "name": "Export Shipments to CSV",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/export/shipments",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "export",
+            "shipments"
+          ]
+        },
+        "description": "Downloads all shipments as a CSV file."
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5210",
+      "type": "string"
+    }
+  ]
+}

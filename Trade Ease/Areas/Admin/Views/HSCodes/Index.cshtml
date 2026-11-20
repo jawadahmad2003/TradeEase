@@ -1,0 +1,5 @@
+@model IEnumerable<TradeEase.Models.Entities.HSCode>
+@{ ViewData["Title"] = "HS Tariff Admin"; }
+<div class="card"><div class="card-body p-0"><table class="table mb-0"><thead><tr><th>Code</th><th>Description</th><th>Customs%</th><th>Sales Tax%</th><th>AIT%</th><th>Year</th></tr></thead><tbody>
+@foreach (var c in Model) { <tr><td>@c.Code</td><td>@c.Description</td><td>@c.CustomsDutyPct</td><td>@c.SalesTaxPct</td><td>@c.AITPct</td><td>@c.TariffYear</td></tr> }
+</tbody></table></div></div>

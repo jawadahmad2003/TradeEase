@@ -1,0 +1,5 @@
+@model IEnumerable<TradeEase.Models.Entities.ExportScheme>
+@{ ViewData["Title"] = "Scheme Rules"; }
+<div class="card"><div class="card-body p-0"><table class="table mb-0"><thead><tr><th>Code</th><th>Name</th><th>Min Export %</th><th>Min USD</th><th>Active</th></tr></thead><tbody>
+@foreach (var s in Model) { <tr><td>@s.SchemeCode</td><td>@s.SchemeName</td><td>@s.MinExportPct</td><td>@s.MinTurnoverUsd</td><td>@s.IsActive</td></tr> }
+</tbody></table></div></div>

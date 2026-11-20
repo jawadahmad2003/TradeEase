@@ -1,0 +1,102 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+
+
+  <PropertyGroup>
+
+    <TargetFramework>net10.0</TargetFramework>
+
+    <Nullable>enable</Nullable>
+
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <RootNamespace>TradeEase</RootNamespace>
+
+    <LangVersion>latest</LangVersion>
+
+    <SpaRoot>..\tradeease-client\</SpaRoot>
+
+    <!-- Set RunBuildSpa=false in FIX-BUILD.ps1 to avoid running npm twice -->
+    <RunBuildSpa Condition="'$(RunBuildSpa)' == ''">true</RunBuildSpa>
+
+    <!-- Prevents crash: DirectoryNotFoundException on obj\...\compressed at runtime -->
+    <StaticWebAssetsEnableCompression>false</StaticWebAssetsEnableCompression>
+
+    <UserSecretsId>dc5d2789-5ac0-478b-b392-d9de6db3e824</UserSecretsId>
+  </PropertyGroup>
+
+
+
+  <!-- Exclude leftover field-service files that are not part of TradeEase -->
+  <ItemGroup>
+    <Compile Remove="Controllers\CommunicationsController.cs" />
+    <Compile Remove="Services\JobCompletionService.cs" />
+    <Compile Remove="Services\JobPhotoStorageService.cs" />
+    <Compile Remove="Services\Job*.cs" />
+  </ItemGroup>
+
+
+
+  <ItemGroup>
+
+    <PackageReference Include="ClosedXML" Version="0.105.0" />
+
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.0" />
+
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.0">
+
+      <PrivateAssets>all</PrivateAssets>
+
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+
+    </PackageReference>
+
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.0" />
+
+    <PackageReference Include="Stripe.net" Version="52.0.0" />
+
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.3.0" />
+
+    <PackageReference Include="QuestPDF" Version="2024.10.1" />
+
+    <PackageReference Include="Otp.NET" Version="1.4.0" />
+
+    <PackageReference Include="QRCoder" Version="1.6.0" />
+
+  </ItemGroup>
+
+
+
+  <Target Name="CleanStaticWebAssetCache" BeforeTargets="BuildSpa" Condition="'$(RunBuildSpa)' == 'true'">
+    <Delete Files="$(IntermediateOutputPath)staticwebassets.build.json" ContinueOnError="true" />
+    <Delete Files="$(IntermediateOutputPath)staticwebassets.build.endpoints.json" ContinueOnError="true" />
+    <Delete Files="$(IntermediateOutputPath)staticwebassets.development.json" ContinueOnError="true" />
+    <Delete Files="$(IntermediateOutputPath)rpswa.dswa.cache.json" ContinueOnError="true" />
+    <Delete Files="$(IntermediateOutputPath)rbcswa.dswa.cache.json" ContinueOnError="true" />
+  </Target>
+
+
+
+  <Target Name="BuildSpa" BeforeTargets="Build" Condition="'$(RunBuildSpa)' == 'true'">
+
+    <Message Importance="high" Text="Building TradeEase React UI (green theme) into wwwroot/spa..." />
+
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm.cmd install" ContinueOnError="false" />
+
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm.cmd run build" ContinueOnError="false" />
+
+  </Target>
+
+
+
+  <Target Name="VerifySpaBuild" AfterTargets="Build">
+
+    <Error Condition="!Exists('$(MSBuildProjectDirectory)\wwwroot\spa\index.html')" Text="React UI build failed — run BUILD-UI.bat from the solution folder, then Rebuild." />
+
+    <Error Condition="!Exists('$(MSBuildProjectDirectory)\wwwroot\spa\assets')" Text="SPA assets folder missing — run FIX-BUILD.ps1 to rebuild React UI and clear cache." />
+
+  </Target>
+
+
+
+</Project>

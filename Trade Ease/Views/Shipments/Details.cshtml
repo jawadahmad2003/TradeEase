@@ -1,0 +1,9 @@
+@model TradeEase.Models.Entities.Shipment
+@{ ViewData["Title"] = "Shipment " + Model.ShipmentReference; }
+<div class="card mb-3"><div class="card-body">
+<h2>@Model.ShipmentReference <span class="badge bg-info">@Model.ShipmentStatus</span></h2>
+<p>@Model.ProductDesc · @Model.ShipmentType</p>
+<p class="text-muted">Party: @(Model.Party?.Name ?? "—") · HS: @(Model.HSCode?.Code ?? "—")</p>
+<p>Invoice: @Model.InvoiceValue @Model.Currency · PKR: @(Model.TotalValuePKR?.ToString("N2") ?? "—")</p>
+</div></div>
+<a asp-action="Index" class="btn btn-link">← Back to Shipments</a>

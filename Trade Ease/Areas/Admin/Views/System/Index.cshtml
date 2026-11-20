@@ -1,0 +1,7 @@
+@model IEnumerable<TradeEase.Models.Entities.SystemSetting>
+@{ ViewData["Title"] = "System Settings"; var fx = ViewBag.LastForex as TradeEase.Models.Entities.ForexRate; }
+<div class="row">
+<div class="col-md-6"><div class="card mb-3"><div class="card-body"><h5>Forex</h5><p class="mb-0">Last sync: @(fx?.CreatedAt.ToString("dd-MMM-yyyy HH:mm") ?? "—")</p></div></div></div>
+<div class="col-md-6"><div class="card mb-3"><div class="card-body"><h5>Settings</h5>
+@foreach (var s in Model) { <div><strong>@s.SettingKey</strong>: @s.SettingValue</div> }
+</div></div></div></div>

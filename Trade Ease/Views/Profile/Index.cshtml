@@ -1,0 +1,8 @@
+@model TradeEase.Models.Entities.User
+@{ ViewData["Title"] = "My Profile"; }
+<div class="card"><div class="card-body">
+<h2>@Model.FullName <span class="badge bg-success">@Model.Role.RoleName</span></h2>
+<p class="text-muted mb-1">@Model.Email</p>
+<p>@Model.BusinessName · @Model.City</p>
+<p>NTN: @(Model.NTN ?? "—") · Verified: @(Model.IsVerified ? "Yes" : "No")</p>
+</div></div>

@@ -1,0 +1,14 @@
+@model IEnumerable<TradeEase.Models.Entities.HSCode>
+@{ ViewData["Title"] = "HS Codes & Duty"; var calc = ViewBag.Calculator as TradeEase.Services.DutyBreakdown; }
+<div class="card mb-3"><div class="card-body">
+<form method="get" class="row g-2">
+<div class="col-md-6"><input name="q" value="@ViewBag.Search" class="form-control" placeholder="Search HS code or product..." /></div>
+<div class="col-md-3"><input name="invoiceValue" type="number" value="@ViewBag.InvoiceValue" class="form-control" /></div>
+<div class="col-md-3"><button class="btn btn-primary w-100">Search & Calculate</button></div>
+</form></div></div>
+@if (calc != null) {
+<div class="alert alert-success">Sample duty on USD @ViewBag.InvoiceValue (rate @ViewBag.UsdRate): Total tax PKR @calc.TotalTax.ToString("N2") · Grand total PKR @calc.GrandTotal.ToString("N2")</div>
+}
+<div class="card"><div class="card-body p-0"><table class="table mb-0"><thead><tr><th>HS Code</th><th>Description</th><th>Customs%</th><th>Sales Tax%</th><th>AIT%</th></tr></thead><tbody>
+@foreach (var c in Model) { <tr><td>@c.Code</td><td>@c.Description</td><td>@c.CustomsDutyPct</td><td>@c.SalesTaxPct</td><td>@c.AITPct</td></tr> }
+</tbody></table></div></div>

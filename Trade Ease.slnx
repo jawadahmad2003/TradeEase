@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Trade Ease/Trade Ease.csproj" />
+  <Project Path="TradeEase.ReportingApi/TradeEase.ReportingApi.csproj" />
+</Solution>

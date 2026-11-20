@@ -1,0 +1,5 @@
+@model IEnumerable<TradeEase.Models.Entities.ExportScheme>
+@{ ViewData["Title"] = "Scheme Checker"; }
+<div class="card"><div class="card-body p-0"><table class="table mb-0"><thead><tr><th>Code</th><th>Scheme</th><th>Min Export %</th><th>Min Turnover USD</th><th>Status</th></tr></thead><tbody>
+@foreach (var s in Model) { <tr><td>@s.SchemeCode</td><td>@s.SchemeName</td><td>@s.MinExportPct</td><td>@s.MinTurnoverUsd.ToString("N0")</td><td>@(s.IsActive ? "Active" : "Disabled")</td></tr> }
+</tbody></table></div></div>

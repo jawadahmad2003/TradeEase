@@ -1,0 +1,6 @@
+@model IEnumerable<TradeEase.Models.Entities.ForexRate>
+@{ ViewData["Title"] = "Forex Rates"; }
+<div class="card"><div class="card-body p-0"><table class="table mb-0"><thead><tr><th>Currency</th><th>Rate (PKR)</th><th>Date</th><th>Source</th></tr></thead><tbody>
+@foreach (var r in Model) { <tr><td>@r.CurrencyCode</td><td>@r.ExchangeRate.ToString("N4")</td><td>@r.RateDate</td><td>@r.RateSource</td></tr> }
+@if (!Model.Any()) { <tr><td colspan="4" class="text-muted text-center py-4">No forex rates in database.</td></tr> }
+</tbody></table></div></div>

@@ -1,0 +1,19 @@
+:root {
+    --te-primary: #1a7a5e;
+    --te-primary-dark: #145e48;
+}
+
+body { font-family: 'Segoe UI', system-ui, sans-serif; }
+
+.main-sidebar { background-color: #0f1923 !important; }
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active {
+    background-color: rgba(26, 122, 94, 0.25) !important;
+    color: #fff !important;
+}
+.brand-link { background: var(--te-primary) !important; color: #fff !important; }
+.btn-primary { background-color: var(--te-primary); border-color: var(--te-primary); }
+.btn-primary:hover { background-color: var(--te-primary-dark); border-color: var(--te-primary-dark); }
+.card-te { border-top: 3px solid var(--te-primary); }
+.auth-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #f4f6f8; }
+.auth-card { max-width: 420px; width: 100%; }
+.stat-value { font-size: 1.75rem; font-weight: 700; color: var(--te-primary); }

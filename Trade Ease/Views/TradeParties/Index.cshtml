@@ -1,0 +1,19 @@
+@model IEnumerable<TradeEase.Models.Entities.TradeParty>
+@{
+    ViewData["Title"] = "Trade Parties";
+}
+<div class="card">
+    <div class="card-header"><h3 class="card-title">Trade Parties</h3></div>
+    <div class="card-body p-0">
+        <table class="table table-striped mb-0">
+            <thead><tr><th>Name</th><th>Type</th><th>Country</th><th>Email</th></tr></thead>
+            <tbody>
+            @foreach (var p in Model)
+            {
+                <tr><td>@p.Name</td><td>@p.PartyType</td><td>@p.Country</td><td>@p.Email</td></tr>
+            }
+            @if (!Model.Any()) { <tr><td colspan="4" class="text-center text-muted py-4">No parties found.</td></tr> }
+            </tbody>
+        </table>
+    </div>
+</div>

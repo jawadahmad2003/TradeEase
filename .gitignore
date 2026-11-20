@@ -1,0 +1,57 @@
+
+# =====================================
+# .NET / C# Build Outputs
+# =====================================
+bin/
+obj/
+[Bb]in/
+[Oo]bj/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# =====================================
+# React / Node.js
+# =====================================
+node_modules/
+dist/
+dist-ssr/
+*.local
+wwwroot/spa/assets/
+
+# =====================================
+# Environment Variables & Secrets
+# =====================================
+.env
+.env.*
+!.env.example
+appsettings.Production.json
+secrets.json
+
+# =====================================
+# Sensitive Application Data
+# =====================================
+Dummy_Registration_Data.pdf
+**/App_Data/documents/
+
+# =====================================
+# Database Generated Files
+# =====================================
+*.bak
+*.mdf
+*.ldf
+
+# =====================================
+# Logs
+# =====================================
+logs/
+*.log
+
+# =====================================
+# Operating System
+# =====================================
+.DS_Store
+Thumbs.db
+desktop.ini
